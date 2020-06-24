@@ -4,17 +4,27 @@
     overflow-x: hidden;
     margin-right: auto;
     margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
 }
 
 .items{
     display: flex;
     flex-wrap: wrap;
     margin: 0.5rem 2.5rem 0 2.5rem;
+    justify-content: center;
 }
 
 .item{
-    margin-right: 0.5rem ;
-    margin-bottom: 0.5rem ;
+    width: 49%;
+    height: 11rem;
+    border: 1px solid white;
+}
+
+img{
+    height: 75%;
+    width: 100%
 }
 
 .nav{
