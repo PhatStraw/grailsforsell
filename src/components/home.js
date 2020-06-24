@@ -5,16 +5,39 @@ import '../css/bare.css'
 const Home = () => {
   return (
     <div className="homeWrapper">
-      <div className='bodyWrapper'>
-        <div className="nav">
-          <h2>Grails For Sell</h2>
-          <div className="options">
-            <Link to="/link">Vintage</Link>
-            <Link to="/link">Streetwear</Link>
-            <Link to="/link">Hype</Link>
+        <div className="items">
+        <div className='item'>
+            <div>Title</div>
+            <div>Picture</div>
+            <div>Price</div>
           </div>
+          <div className='item'>
+            <div>Title</div>
+            <div>Picture</div>
+            <div>Price</div>
+          </div>
+          <div className='item'>
+            <div>Title</div>
+            <div>Picture</div>
+            <div>Price</div>
+          </div>
+          <div className='item'>
+            <div>Title</div>
+            <div>Picture</div>
+            <div>Price</div>
+          </div>
+          <div className='item'>
+            <div>Title</div>
+            <div>Picture</div>
+            <div>Price</div>
+          </div>
+          <div className='item'>
+            <div>Title</div>
+            <div>Picture</div>
+            <div>Price</div>
+          </div>
+          
         </div>
-      </div>
     </div>
   )
 }

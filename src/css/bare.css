@@ -2,11 +2,20 @@
     width: 100%; 
     height: 100vh; 
     overflow-x: hidden;
+    margin-right: auto;
+    margin-left: auto;
 }
 
-/* .bodyWrapper{
-    padding: 1rem
-} */
+.items{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0.5rem 2.5rem 0 2.5rem;
+}
+
+.item{
+    margin-right: 0.5rem ;
+    margin-bottom: 0.5rem ;
+}
 
 .nav{
     width: 100%;
