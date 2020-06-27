@@ -6,8 +6,8 @@ const Nav = () => {
     <div className="nav">
       <h2>Grails For Sell</h2>
       <div className="options">
-        <Link to="/link" className='navItem'>Vintage</Link>
-        <Link to="/link" className='navItem'>Streetwear</Link>
+        <Link to="/vintage" className='navItem'>Vintage</Link>
+        <Link to="/streetwear" className='navItem'>Streetwear</Link>
         <Link to="/link" className='navItem'>Hype</Link>
       </div>
     </div>
