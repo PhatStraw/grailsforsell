@@ -1,6 +1,7 @@
 import React from 'react'
 import Home from './components/home.js'
 import Bare1 from './components/bare1.js'
+import Hype from './components/hype.js'
 import Nav from './components/Nav.js'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 
@@ -11,6 +12,7 @@ const App = () => {
     <Switch>
       <Route exact path="/vintage" component={Home} />
       <Route path="/streetwear" component={Bare1} />
+      <Route path="/hype" component={Hype} />
     </Switch>
   </Router>
   )
