@@ -1,7 +1,7 @@
 .homeWrapper{
     width: 100%; 
     height: 100vh; 
-    overflow-x: hidden;
+    overflow: hidden;
     margin-right: auto;
     margin-left: auto;
     display: flex;
@@ -12,18 +12,31 @@
 .items{
     display: flex;
     flex-wrap: wrap;
-    margin: 0.5rem 2.5rem 0 2.5rem;
+    margin: 0.5rem 2rem 0 2rem;
     justify-content: center;
 }
 
 .item{
-    width: 49%;
+    width: 45%;
     height: 11rem;
     border: 1px solid white;
+    padding: .2rem;
+}
+
+.nav{
+    overflow: hidden;
+}
+
+.navItem{
+    text-decoration: none;
+}
+
+.navItem:hover{
+    border-bottom: 1px solid black;
 }
 
 img{
-    height: 75%;
+    height: 70%;
     width: 100%
 }
 
