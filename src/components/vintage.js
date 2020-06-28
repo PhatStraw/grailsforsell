@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import '../css/bare.css'
 import Shirt from '../assets/shirt.jpeg'
 
-const Home = () => {
+const Vintage = () => {
   return (
     <div className="homeWrapper">
       <div className="items">
@@ -48,4 +48,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Vintage
