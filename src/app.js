@@ -3,19 +3,24 @@ import Vintage from './components/vintage.js'
 import Streetwear from './components/streetwear.js'
 import Hype from './components/hype.js'
 import Nav from './components/Nav.js'
-import Item from './components/Item.js'
+import Item from './components/itemCover.js'
+import ItemPage from './components/ItemPage.js'
+import Home from './components/Home.js'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 
 const App = () => {
   return (
     <Router>
-      <Nav />
-    <Switch>
-      <Route exact path="/vintage" component={Vintage} />
-      <Route path="/streetwear" component={Streetwear} />
-      <Route path="/hype" component={Hype} />
-      <Route path="/item/:id" component={Item} />
-    </Switch>
+      <div className="app">
+        <Nav />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/vintage" component={Vintage} />
+          <Route path="/streetwear" component={Streetwear} />
+          <Route path="/hype" component={Hype} />
+          <Route path="/item/:id" component={ItemPage} />
+        </Switch>
+      </div>
   </Router>
   )
 }

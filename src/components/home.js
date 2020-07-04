@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import '../css/bare.css'
 import Shirt from '../assets/shirt.jpeg'
-import ItemCover from './itemCover'
+import Item from './itemCover'
 
-const Vintage = () => {
+const Home = () => {
   const [items, setItems] = useState()
 
   useEffect(() => {
@@ -14,7 +14,6 @@ const Vintage = () => {
           'http://localhost:8081/items/all?id=5f00b50db4df209b36ddb7ed'
         )
         const final = await res.json()
-        // console.log(final)
         setItems(final)
       } catch (err) {
         console.log(err)
@@ -22,22 +21,21 @@ const Vintage = () => {
     }
     fetchItems()
   }, [])
+
   if (items) {
     return (
-      <div className="wrap">
+      <div className="homeWrapper">
         <div className="items">
           {items.doc.map((i) => {
-            {{console.log(i)}}
             return( 
-              <ItemCover
-                id={i._id}
-                photo={i.img}
-                title={i.name}
-                size={i.size}
-                description={i.description}
-                condition={i.condition}
-                price={i.price}
-              />
+                <Item
+                  photo={i.img}
+                  title={i.name}
+                  size={i.size}
+                  description={i.description}
+                  condition={i.condition}
+                  price={i.price}
+                />      
           )})}
         </div>
       </div>
@@ -46,4 +44,4 @@ const Vintage = () => {
   return <div>Loading</div>
 }
 
-export default Vintage
+export default Home
