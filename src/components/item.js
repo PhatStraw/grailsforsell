@@ -11,8 +11,8 @@ const Item = (props) => {
           <div className="itemTitle">{props.title}</div>
           <div className="itemSize">{props.size.toUpperCase()}</div>
         </div>
-        <div className="itemCondition">{props.description}</div>
-        <div>{props.price}</div>
+        <div className="itemDescription">{props.description}</div>
+        <div className="itemPrice">${props.price}</div>
       </div>
     </div>
   );

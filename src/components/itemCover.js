@@ -5,6 +5,7 @@ import Shirt from '../assets/shirt.jpeg'
 
 const ItemCover = (props) => {
   const [title, setTitle] = useState()
+  const [description, setDescription] = useState()
   
   useEffect(()=>{
     if(props.title.length > 18){
@@ -12,6 +13,13 @@ const ItemCover = (props) => {
         setTitle(newTitle.concat('...'))   
     }else{
       setTitle(props.title)
+    }
+
+    if(props.description.length > 34){
+      var newDescription = props.description.slice(0, 30) 
+      setDescription(newDescription.concat('...'))   
+    }else{
+      setDescription(props.description)
     }
   },[props])
   
@@ -22,11 +30,11 @@ const ItemCover = (props) => {
       </Link>
       <div className="itemContent">
         <div className="itemBlock">
-          <div className="itemTitle">{title}</div>
-          <div className="itemSize">{props.size.toUpperCase()}</div>
+          <div className="CoverTitle">{title}</div>
+          <div className="CoverSize">{props.size.toUpperCase()}</div>
         </div>
-        <div className="itemCondition">{props.description}</div>
-        <div>{props.price}</div>
+        <div className="CoverDescription">{description}</div>
+        <div className="CoverPrice">${props.price}</div>
       </div>
     </div>
   );

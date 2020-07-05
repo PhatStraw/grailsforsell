@@ -25,6 +25,12 @@ const Home = () => {
   if (items) {
     return (
       <div className="homeWrapper">
+        <div>
+          <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap"
+            rel="stylesheet"
+          />
+        </div>
         <div className="items">
           {items.doc.map((i) => {
             return( 

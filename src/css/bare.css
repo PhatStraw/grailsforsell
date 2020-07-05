@@ -1,4 +1,16 @@
-root{
+html,
+body {
+    height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    color: #1a1a1e;
+}
+
+
+#root{
     margin: 0;
     padding: 0
 }
@@ -25,19 +37,23 @@ root{
 .items{
     display: flex;
     flex-wrap: wrap;
-    margin: 0rem;
+    margin: 0 .5rem;
 }
 
 .item{
     width: 47%;
     height: 13rem;
     border: 1px solid white;
-    padding: .2rem;
+    padding: 0 .2rem .9rem .2rem;
+}
+
+.itemPage{
+    height: 100%
 }
 
 .itemItem{
     width: 90%;
-    height: 13rem;
+    height: 73vh;
     border: 1px solid white;
     padding: .2rem;
     margin-right: auto;
@@ -45,26 +61,58 @@ root{
 }
 
 .itemContent{
-    margin: 0 .2rem;
+    margin: .4rem .3rem;
 }
 
 .itemTitle{
-    font-size: .9rem;
+    font-size: 1rem;
     font-weight: bold;
 }
 
 .itemSize{
-    font-size: 1rem;
+    font-size: .9rem;
 }
 
-.itemCondition{
-    font-size: .3rem;
+.itemDescription{
+    font-size: .7rem;
+    margin: .2rem 0;
+    line-height: 1rem;
+}
+
+.itemShirt{
+    height:95%
+}
+
+.CoverContent{
+    margin: .2rem .3rem;
+}
+
+.CoverTitle{
+    font-size: .8rem;
+    font-weight: bold;
+}
+
+.CoverSize{
+    font-size: .8rem;
+}
+
+.CoverDescription{
+    font-size: .5rem;
+    margin-bottom: .1rem;
+}
+
+.CoverShirt{
+    height:100%
+}
+
+.CoverPrice{
+    font-size: .8em;
 }
 
 .itemBlock{
     display: flex;
     flex-direction: row;
-    justify-content: space-between
+    justify-content: space-between;
 }
 
 .nav{
@@ -76,11 +124,11 @@ root{
 .navItem{
     text-decoration: none;
     color: black;
+    padding: .1rem
 }
 
 .navItem:hover{
     border-bottom: 1px solid black;
-    color: green
 }
 
 img{
