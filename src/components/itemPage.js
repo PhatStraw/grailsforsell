@@ -19,7 +19,6 @@ const ItemPage = (props) => {
   if(item){
     return (
       <div className="itemPage">
-
         <Item
           // photo={item.item.img}
           title={item.item.name}

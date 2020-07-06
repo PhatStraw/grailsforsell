@@ -33,6 +33,22 @@ body {
     overflow-x: hidden;
 }
 
+.header{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.signUp{
+    display: flex;
+    flex-direction: column;
+    margin: 0 2rem;
+}
+
+.input{
+    margin: .5rem 0
+}
 
 .items{
     display: flex;

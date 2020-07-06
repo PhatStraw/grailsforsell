@@ -11,10 +11,9 @@ const Vintage = () => {
     const fetchItems = async () => {
       try {
         const res = await fetch(
-          'http://localhost:8081/items/all?id=5f00b50db4df209b36ddb7ed'
+          'http://localhost:8081/items/all'
         )
         const final = await res.json()
-        // console.log(final)
         setItems(final)
       } catch (err) {
         console.log(err)
@@ -27,7 +26,6 @@ const Vintage = () => {
       <div className="wrap">
         <div className="items">
           {items.doc.map((i) => {
-            {{console.log(i)}}
             return( 
               <ItemCover
                 id={i._id}
