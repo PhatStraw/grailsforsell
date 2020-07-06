@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { Link, Redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import '../css/bare.css'
 import Shirt from '../assets/shirt.jpeg'
-import Item from './itemCover'
+import ItemCover from './itemCover'
 
 const Home = () => {
   const [items, setItems] = useState()
@@ -14,6 +14,7 @@ const Home = () => {
           'http://localhost:8081/items/all?id=5f00b50db4df209b36ddb7ed'
         )
         const final = await res.json()
+        // console.log(final)
         setItems(final)
       } catch (err) {
         console.log(err)
@@ -21,27 +22,22 @@ const Home = () => {
     }
     fetchItems()
   }, [])
-
   if (items) {
     return (
-      <div className="homeWrapper">
-        <div>
-          <link
-            href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap"
-            rel="stylesheet"
-          />
-        </div>
+      <div className="wrap">
         <div className="items">
           {items.doc.map((i) => {
+            {{console.log(i)}}
             return( 
-                <Item
-                  photo={i.img}
-                  title={i.name}
-                  size={i.size}
-                  description={i.description}
-                  condition={i.condition}
-                  price={i.price}
-                />      
+              <ItemCover
+                id={i._id}
+                photo={i.img}
+                title={i.name}
+                size={i.size}
+                description={i.description}
+                condition={i.condition}
+                price={i.price}
+              />
           )})}
         </div>
       </div>
