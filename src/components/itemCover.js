@@ -24,10 +24,10 @@ const ItemCover = (props) => {
   },[props])
   
   return (
-    <div className="item">
-      <Link to={`/item/${props.id}`}>
+    <button className="item" onClick={props.onClick} id={props.id}> 
+      {/* <Link to={`/item/${props.id}`}>
         <img src={Shirt} />
-      </Link>
+      </Link> */}
       <div className="itemContent">
         <div className="itemBlock">
           <div className="CoverTitle">{title}</div>
@@ -36,7 +36,7 @@ const ItemCover = (props) => {
         <div className="CoverDescription">{description}</div>
         <div className="CoverPrice">${props.price}</div>
       </div>
-    </div>
+    </button>
   );
 };
 

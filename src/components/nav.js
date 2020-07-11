@@ -9,7 +9,7 @@ const Nav = () => {
       <h2 className="header">
         <div style={{ display: 'hidden'}}></div>
         <NavLink to="/" className="navTitle">Grails For Sell</NavLink>
-        <NavLink to={`/checkout?quantity=${this.props.location.quantity}&amount=${this.props.location.amount}`} className="navTitle"><FaShoppingCart size={20}/></NavLink>
+        <NavLink to={'/checkout'} className="navTitle"><FaShoppingCart size={20}/></NavLink>
       </h2>
       <div className="options">
         <NavLink to="/vintage" className='navItem'>Vintage</NavLink>

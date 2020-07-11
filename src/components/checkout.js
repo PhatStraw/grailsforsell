@@ -3,15 +3,22 @@ import { Link } from 'react-router-dom'
 import '../css/bare.css'
 import Shirt from '../assets/shirt.jpeg'
 import ItemCover from './itemCover'
+import { loadStripe } from '@stripe/stripe-js';
 const stripePromise = loadStripe('pk_live_51GwCfaFyetTzufDNcpEmglcKUNAVrgJIBTA9Itkxkq5qgDl0fRY5YDSfzs1P7CndIDKbJEiqIqC3WqmeUeTYbDRO00FQxgmv4i');
 
-const Checkout = ({amount, quantity}) => {
+const Checkout = (props) => {
   const [items, setItems] = useState()
   useEffect(()=>{
     const getCart = async() => {
-      const items = await fetch('http://localhost:8081/')
+      var localCart = localStorage.getItem('cart');
+
+      const items = await fetch(`http://localhost:8081/user/cart?id=${localCart}`)
+      const newI = await items.json()
+      setItems(newI)
+      console.log(newI)
     }
-  })
+    getCart()
+  },[])
   const handleClick = async (event) => {
     // Call your backend to create the Checkout Session—see previous step
     const { sessionId } = await fetch('http://localhost:8081/user/checkout',{
@@ -22,7 +29,7 @@ const Checkout = ({amount, quantity}) => {
       },
       body: JSON.stringify({amount, quantity})
     });
-    // When the customer clicks on the button, redirect them to Checkout.
+    //When the customer clicks on the button, redirect them to Checkout.
     const stripe = await stripePromise;
     const { error } = await stripe.redirectToCheckout({
       sessionId,
@@ -31,11 +38,23 @@ const Checkout = ({amount, quantity}) => {
     // error, display the localized error message to your customer
     // using `error.message`.
   };
-  return (
-    <button role="link" onClick={handleClick}>
+  if(items){
+    console.log(items)
+    return (
+    <div>
+      {items.doc.items.map((i) => (
+      <div>{i}</div>
+    ))}
+    
+      
+      <button role="link" onClick={handleClick}>
       Checkout
     </button>
+    </div>
+    
   );
+  }
+  return <div>Loading</div>
 }
 
 export default Checkout
