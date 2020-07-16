@@ -27,6 +27,11 @@ body {
     line-height: 1rem;
 }
 
+.priceCart{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
 
 .wrap{
     height: 100vh; 

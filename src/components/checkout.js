@@ -8,9 +8,13 @@ const stripePromise = loadStripe('pk_live_51GwCfaFyetTzufDNcpEmglcKUNAVrgJIBTA9I
 
 const Checkout = (props) => {
   const [items, setItems] = useState()
+  const [price, setPrice] = useState()
+  const [quantity, setQuantity] = useState()
   useEffect(()=>{
     const getCart = async() => {
       var localCart = localStorage.getItem('cart');
+      let quant = 0
+      let pri = 0
 
       const items = await fetch(`http://localhost:8081/user/cart?id=${localCart}`)
       const newI = await items.json()
@@ -27,7 +31,7 @@ const Checkout = (props) => {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({amount, quantity})
+      body: JSON.stringify({items: items.doc.items})
     });
     //When the customer clicks on the button, redirect them to Checkout.
     const stripe = await stripePromise;
@@ -44,8 +48,10 @@ const Checkout = (props) => {
     <div>
       {items.doc.items.map((i) => (
       <div>{i}</div>
+      
     ))}
-    
+      <div>quantity: {quantity}</div>
+      <div>price: {price}</div>
       
       <button role="link" onClick={handleClick}>
       Checkout

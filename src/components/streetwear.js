@@ -25,29 +25,16 @@ const Streetwear = () => {
     }
     fetchItems()
   }, [])
-
-  const onClick = async (e) => {
-    var localCart = localStorage.getItem('cart');
-    const cart = await fetch(`http://localhost:8081/user/additem?id=${localCart}`, {
-      method: 'POST',
-      mode: 'cors',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({id: e.target.id })
-    });
-    const newC = await cart.json()
-    console.log(newC)
-  }
+  
 
   if (items && !checkout) {
     return (
       <div className="wrap">
         <div className="items">
           {items.doc.map((i) => {
+            console.log(i._id)
             return( 
               <ItemCover
-                onClick={onClick}
                 id={i._id}
                 photo={i.img}
                 title={i.name}
