@@ -10,10 +10,17 @@ import SignUp from './components/signup.js'
 import SignIn from './components/signin.js'
 import Checkout from './components/checkout.js'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
+import { loadStripe } from '@stripe/stripe-js';
+import { CardElement,
+  Elements,
+  useStripe,
+  useElements,} from '@stripe/react-stripe-js';
+const stripePromise = loadStripe('pk_test_51GwCfaFyetTzufDNWFGlU4bems6JKEUAXGl6i5SQP2VrYnYRNmOCXmN2H8WXmUy3Rfny3p5LcZ2antLDjx25XQN300P0etPwv1');
 
 const App = () => {
   return (
-    <Router>
+    <Elements stripe={stripePromise}>
+       <Router>
       <div className="app">
         <Nav />
         <Switch>
@@ -28,6 +35,8 @@ const App = () => {
         </Switch>
       </div>
   </Router>
+    </Elements>
+   
   )
 }
 

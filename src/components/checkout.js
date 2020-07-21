@@ -3,62 +3,99 @@ import { Link } from 'react-router-dom'
 import '../css/bare.css'
 import Shirt from '../assets/shirt.jpeg'
 import ItemCover from './itemCover'
-import { loadStripe } from '@stripe/stripe-js';
-const stripePromise = loadStripe('pk_live_51GwCfaFyetTzufDNcpEmglcKUNAVrgJIBTA9Itkxkq5qgDl0fRY5YDSfzs1P7CndIDKbJEiqIqC3WqmeUeTYbDRO00FQxgmv4i');
+import {
+  CardElement,
+  Elements,
+  useStripe,
+  useElements,
+} from '@stripe/react-stripe-js'
+import StripeCheckout from 'react-stripe-checkout'
+const fetchCheckoutSession = async ({ quantity, price }) => {
+  return fetch('http://localhost:8081/user/create-checkout-session', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      quantity,
+      price,
+    }),
+  }).then((res) => res.json())
+}
 
 const Checkout = (props) => {
-  const [items, setItems] = useState()
+  const [items, setItems] = useState([])
   const [price, setPrice] = useState()
   const [quantity, setQuantity] = useState()
-  useEffect(()=>{
-    const getCart = async() => {
-      var localCart = localStorage.getItem('cart');
-      let quant = 0
-      let pri = 0
+  const stripe = useStripe()
+  const elements = useElements()
+  useEffect(() => {
+    let quant = 0
+    let pri = 0
 
-      const items = await fetch(`http://localhost:8081/user/cart?id=${localCart}`)
+    const getCart = async () => {
+      var localCart = localStorage.getItem('cart')
+
+      const items = await fetch(
+        `http://localhost:8081/user/cart?id=${localCart}`
+      )
       const newI = await items.json()
-      setItems(newI)
-      console.log(newI)
+
+      setItems(newI.doc)
+
+      const total = newI.doc.reduce((pri, i) => pri + i.price, 0)
+      console.log('total', total)
+      setPrice(total.toFixed(2))
+      setQuantity(newI.doc.length)
+      console.log('newitem', newI.doc)
     }
     getCart()
-  },[])
+  }, [])
   const handleClick = async (event) => {
-    // Call your backend to create the Checkout Session—see previous step
-    const { sessionId } = await fetch('http://localhost:8081/user/checkout',{
-      method: 'POST',
-      mode: 'cors',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({items: items.doc.items})
-    });
-    //When the customer clicks on the button, redirect them to Checkout.
-    const stripe = await stripePromise;
-    const { error } = await stripe.redirectToCheckout({
-      sessionId,
-    });
-    // If `redirectToCheckout` fails due to a browser or network
-    // error, display the localized error message to your customer
-    // using `error.message`.
-  };
-  if(items){
-    console.log(items)
+    event.preventDefault()
+
+    const { error, paymentMethod } = await stripe.createPaymentMethod({
+      type: 'card',
+      card: elements.getElement(CardElement),
+    })
+
+    if (!error) {
+      const { id } = paymentMethod
+      try {
+        const { data } = await fetch(
+          'http://localhost:8081/user/checkout',
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              id,
+              price,
+            }),
+          }
+        )
+        
+        const response = await data.json()
+      } catch (err) {
+        console.log(err)
+      }
+    }
+  }
+  if (items) {
     return (
-    <div>
-      {items.doc.items.map((i) => (
-      <div>{i}</div>
-      
-    ))}
-      <div>quantity: {quantity}</div>
-      <div>price: {price}</div>
-      
-      <button role="link" onClick={handleClick}>
-      Checkout
-    </button>
-    </div>
-    
-  );
+      <div>
+        {items.map((i) => (
+          <div>{i._id}</div>
+        ))}
+        <div>quantity: {quantity}</div>
+        <div>price: {price}</div>
+        <CardElement />
+        <button role="link" onClick={handleClick}>
+          Checkout
+        </button>
+      </div>
+    )
   }
   return <div>Loading</div>
 }
