@@ -25,7 +25,7 @@ const fetchCheckoutSession = async ({ quantity, price }) => {
 
 const Checkout = (props) => {
   const [items, setItems] = useState([])
-  const [price, setPrice] = useState()
+  const [price, setPrice] = useState(0)
   const [quantity, setQuantity] = useState()
   const stripe = useStripe()
   const elements = useElements()
@@ -42,10 +42,11 @@ const Checkout = (props) => {
       const newI = await items.json()
 
       setItems(newI.doc)
-
-      const total = newI.doc.reduce((pri, i) => pri + i.price, 0)
-      console.log('total', total)
-      setPrice(total.toFixed(2))
+      newI.doc.forEach(i =>{
+        pri += i.price
+      })
+      console.log('total', pri)
+      setPrice(pri)
       setQuantity(newI.doc.length)
       console.log('newitem', newI.doc)
     }
@@ -75,7 +76,7 @@ const Checkout = (props) => {
             }),
           }
         )
-        
+
         const response = await data.json()
       } catch (err) {
         console.log(err)
