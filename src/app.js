@@ -15,7 +15,7 @@ import { CardElement,
   Elements,
   useStripe,
   useElements,} from '@stripe/react-stripe-js';
-const stripePromise = loadStripe('pk_test_51GwCfaFyetTzufDNWFGlU4bems6JKEUAXGl6i5SQP2VrYnYRNmOCXmN2H8WXmUy3Rfny3p5LcZ2antLDjx25XQN300P0etPwv1');
+const stripePromise = loadStripe(`${process.env.STRIPEKEY}`);
 
 const App = () => {
   return (
