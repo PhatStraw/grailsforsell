@@ -58,14 +58,14 @@ body {
 .items{
     display: flex;
     flex-wrap: wrap;
-    margin: 0 .5rem;
+    margin: .5rem;
 }
 
 .item{
     width: 47%;
-    height: 13rem;
+    height: 12rem;
     border: 1px solid white;
-    padding: 0 .2rem .9rem .2rem;
+    padding: .2rem;
 }
 
 .itemPage{
@@ -164,7 +164,7 @@ body {
 
 
 img{
-    height: 70%;
+    height: 60%;
     width: 100%
 }
 
