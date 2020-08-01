@@ -2,10 +2,13 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import '../css/bare.css'
 import Shirt from '../assets/shirt.jpeg'
-import ItemCover from './itemCover'
+import ItemCover from '../components/itemCover'
+import Checkout from './checkout'
 
-const Home = () => {
+const Streetwear = () => {
   const [items, setItems] = useState()
+  const [checkout, setCheckout] = useState()
+  const [bollean, setBollean] = useState()
 
   useEffect(() => {
     const fetchItems = async () => {
@@ -21,11 +24,14 @@ const Home = () => {
     }
     fetchItems()
   }, [])
-  if (items) {
+  
+
+  if (items && !checkout) {
     return (
       <div className="wrap">
         <div className="items">
           {items.doc.map((i) => {
+            console.log(i._id)
             return( 
               <ItemCover
                 id={i._id}
@@ -41,7 +47,8 @@ const Home = () => {
       </div>
     )
   }
+
   return <div>Loading</div>
 }
 
-export default Home
+export default Streetwear

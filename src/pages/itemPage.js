@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import '../css/bare.css'
 import Shirt from '../assets/shirt.jpeg'
-import Item from './item'
+import Item from '../components/item'
 
 const ItemPage = (props) => {
   const [item, setItem] = useState()

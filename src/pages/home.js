@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import '../css/bare.css'
 import Shirt from '../assets/shirt.jpeg'
-import ItemCover from './itemCover'
+import ItemCover from '../components/itemCover'
 
-const Vintage = () => {
+const Home = () => {
   const [items, setItems] = useState()
 
   useEffect(() => {
@@ -44,4 +44,4 @@ const Vintage = () => {
   return <div>Loading</div>
 }
 
-export default Vintage
+export default Home

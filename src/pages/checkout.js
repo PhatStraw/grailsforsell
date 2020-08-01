@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import '../css/bare.css'
 import Shirt from '../assets/shirt.jpeg'
-import ItemCover from './itemCover'
+import ItemCover from '../components/itemCover'
 import {
   CardElement,
   Elements,
@@ -58,20 +58,23 @@ const Checkout = (props) => {
     e.preventDefault()
 
     try {
-      var localCart = localStorage.getItem('cart');
-      console.log('value', )
-      const data = await fetch(`http://localhost:8081/user/removeitem?id=${localCart}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          id: e.target.value,
-        }),
-      })
+      var localCart = localStorage.getItem('cart')
+      console.log('value')
+      const data = await fetch(
+        `http://localhost:8081/user/removeitem?id=${localCart}`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            id: e.target.value,
+          }),
+        }
+      )
 
       const response = await data.json()
-      console.log(response)
+      window.location.reload()
     } catch (e) {
       console.log(e)
     }
@@ -108,29 +111,33 @@ const Checkout = (props) => {
   if (items) {
     return (
       <div style={{ margin: '1rem' }}>
-        {items.map((i) => (
-          <div style={{ margin: '1rem' }}>
-            <div>{i.img}</div>
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-              }}
-            >
-              <div>{i.name}</div>
-              <button value={i._id} onClick={onClick}>
-                X
-              </button>
+        <div>
+          {items.map((i) => (
+            <div style={{ margin: '1rem' }}>
+              <div>{i.img}</div>
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                }}
+              >
+                <div>{i.name}</div>
+                <button value={i._id} onClick={onClick}>
+                  X
+                </button>
+              </div>
             </div>
+          ))}
+          <div>
+            <div style={{ marginBottom: '.5rem' }}>QUANTITY: {quantity}</div>
+            <div>PRICE: {price}</div>
+            <CardElement />
+            <button role="link" onClick={handleClick}>
+              Checkout
+            </button>
           </div>
-        ))}
-        <div style={{ marginBottom: '.5rem' }}>QUANTITY: {quantity}</div>
-        <div>PRICE: {price}</div>
-        <CardElement />
-        <button role="link" onClick={handleClick}>
-          Checkout
-        </button>
+        </div>
       </div>
     )
   }

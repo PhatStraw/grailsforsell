@@ -1,14 +1,13 @@
 import React from 'react'
-import Vintage from './components/vintage.js'
-import Streetwear from './components/streetwear.js'
-import Hype from './components/hype.js'
+import Vintage from './pages/vintage.js'
+import Streetwear from './pages/streetwear.js'
+import Hype from './pages/hype.js'
 import Nav from './components/Nav.js'
-import Item from './components/itemCover.js'
-import ItemPage from './components/ItemPage.js'
-import Home from './components/Home.js'
-import SignUp from './components/signup.js'
-import SignIn from './components/signin.js'
-import Checkout from './components/checkout.js'
+import ItemPage from './pages/ItemPage.js'
+import Home from './pages/Home.js'
+import SignUp from './pages/signup.js'
+import SignIn from './pages/signin.js'
+import Checkout from './pages/checkout.js'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import { loadStripe } from '@stripe/stripe-js'
 import { transitions, positions, Provider as AlertProvider } from 'react-alert'
@@ -20,8 +19,8 @@ import {
   useElements,
 } from '@stripe/react-stripe-js'
 
-console.log(`${process.env.STRIPE_KEY}`)
 const stripePromise = loadStripe(`${process.env.STRIPE_KEY}`)
+
 const options = {
   // you can also just use 'bottom center'
   position: positions.TOP_CENTER,
