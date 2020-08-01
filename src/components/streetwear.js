@@ -17,7 +17,6 @@ const Streetwear = () => {
           'http://localhost:8081/items/all'
         )
         const final = await res.json()
-        console.log(final)
         setItems(final)
       } catch (err) {
         console.log(err)

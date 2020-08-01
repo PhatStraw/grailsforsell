@@ -3,13 +3,14 @@ import { Link } from "react-router-dom"
 import "../css/bare.css"
 import Shirt from '../assets/shirt.jpeg'
 import {FaShoppingCart} from 'react-icons/fa'
-
+import { useAlert } from 'react-alert'
 
 const ItemCover = (props) => {
   const [title, setTitle] = useState()
   const [description, setDescription] = useState()
   const [id, setId] = useState()
-  
+  const alert = useAlert()
+
   useEffect(()=>{
     setId(props.id)
     if(props.title.length > 18){
@@ -29,7 +30,8 @@ const ItemCover = (props) => {
 
   const onClick = async (e) => {
     e.preventDefault()
-    var localCart = localStorage.getItem('cart');
+    try{
+      var localCart = localStorage.getItem('cart');
     const cart = await fetch(`http://localhost:8081/user/additem?id=${localCart}`, {
       method: 'POST',
       mode: 'cors',
@@ -39,7 +41,14 @@ const ItemCover = (props) => {
       body: JSON.stringify({ id })
     });
     const newC = await cart.json()
-    console.log(newC)
+    if(newC){
+      alert.show('Success!')
+    }
+    }catch(e){
+      console.log(e)
+      alert.show('Failed to add item to cart')
+    }
+    
   }
 
   if(props.id){

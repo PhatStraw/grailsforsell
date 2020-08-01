@@ -21,6 +21,7 @@ const ItemPage = (props) => {
       <div className="itemPage">
         <Item
           // photo={item.item.img}
+          id={item.item._id}
           title={item.item.name}
           size={item.item.size}
           description={item.item.description}

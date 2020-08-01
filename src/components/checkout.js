@@ -43,7 +43,7 @@ const Checkout = (props) => {
 
       setItems(newI.doc)
       console.log(newI.doc)
-      newI.doc.forEach(i =>{
+      newI.doc.forEach((i) => {
         pri += i.price
       })
       console.log('total', pri)
@@ -53,6 +53,30 @@ const Checkout = (props) => {
     }
     getCart()
   }, [])
+
+  const onClick = async (e) => {
+    e.preventDefault()
+
+    try {
+      var localCart = localStorage.getItem('cart');
+      console.log('value', )
+      const data = await fetch(`http://localhost:8081/user/removeitem?id=${localCart}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          id: e.target.value,
+        }),
+      })
+
+      const response = await data.json()
+      console.log(response)
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
   const handleClick = async (event) => {
     event.preventDefault()
 
@@ -64,19 +88,16 @@ const Checkout = (props) => {
     if (!error) {
       const { id } = paymentMethod
       try {
-        const { data } = await fetch(
-          'http://localhost:8081/user/checkout',
-          {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              id,
-              price,
-            }),
-          }
-        )
+        const { data } = await fetch('http://localhost:8081/user/checkout', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            id,
+            price,
+          }),
+        })
 
         const response = await data.json()
       } catch (err) {
@@ -86,14 +107,25 @@ const Checkout = (props) => {
   }
   if (items) {
     return (
-      <div style={{margin: '1rem'}}>
+      <div style={{ margin: '1rem' }}>
         {items.map((i) => (
-          <div style={{margin: '1rem'}}>
+          <div style={{ margin: '1rem' }}>
             <div>{i.img}</div>
-            <div>{i.name}</div>
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+              }}
+            >
+              <div>{i.name}</div>
+              <button value={i._id} onClick={onClick}>
+                X
+              </button>
+            </div>
           </div>
         ))}
-        <div style={{marginBottom: '.5rem'}}>QUANTITY: {quantity}</div>
+        <div style={{ marginBottom: '.5rem' }}>QUANTITY: {quantity}</div>
         <div>PRICE: {price}</div>
         <CardElement />
         <button role="link" onClick={handleClick}>
