@@ -42,6 +42,7 @@ const Checkout = (props) => {
       const newI = await items.json()
 
       setItems(newI.doc)
+      console.log(newI.doc)
       newI.doc.forEach(i =>{
         pri += i.price
       })
@@ -85,12 +86,15 @@ const Checkout = (props) => {
   }
   if (items) {
     return (
-      <div>
+      <div style={{margin: '1rem'}}>
         {items.map((i) => (
-          <div>{i._id}</div>
+          <div style={{margin: '1rem'}}>
+            <div>{i.img}</div>
+            <div>{i.name}</div>
+          </div>
         ))}
-        <div>quantity: {quantity}</div>
-        <div>price: {price}</div>
+        <div style={{marginBottom: '.5rem'}}>QUANTITY: {quantity}</div>
+        <div>PRICE: {price}</div>
         <CardElement />
         <button role="link" onClick={handleClick}>
           Checkout
