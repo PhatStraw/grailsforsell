@@ -8,6 +8,7 @@ import Home from './pages/Home.js'
 import SignUp from './pages/signup.js'
 import SignIn from './pages/signin.js'
 import Checkout from './pages/checkout.js'
+import ItemUpload from './pages/itemupload'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import { loadStripe } from '@stripe/stripe-js'
 import { transitions, positions, Provider as AlertProvider } from 'react-alert'
@@ -45,6 +46,7 @@ const App = () => {
               <Route path="/hype" component={Hype} />
               <Route path="/checkout" component={Checkout} />
               <Route path="/item/:id" component={ItemPage} />
+              <Route path="/create" component={ItemUpload} />
             </Switch>
           </div>
         </Router>
