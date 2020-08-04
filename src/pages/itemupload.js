@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import DropZone from '../components/dropzone'
+import { useAlert } from 'react-alert'
+
 
 import '../css/bare.css'
 
@@ -14,6 +16,9 @@ const ItemUpload = () => {
     condition: ''
   })
 
+  const alert = useAlert()
+
+
   const onChange = (evt) => {
     const value = evt.target.value;
     setState({
@@ -22,9 +27,17 @@ const ItemUpload = () => {
     });
   }
 
-  const onSubmit = (e) =>{
+  const onSubmit = async (e) =>{
     e.preventDefault()
     console.log(state)
+    const newItem = await fetch('http://localhost:8081/items/create?id=5f10b40a1f073a44186567a8',{
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify( { ...state } )
+    });
   }
   return (
     <div className="Wrap">
@@ -74,7 +87,7 @@ const ItemUpload = () => {
 
         <div className='form'>
         <label>Photo</label>
-          <DropZone state={state} setState={setState}/>
+          <DropZone state={state} setState={setState} alert={alert}/>
         </div>
 
         <div className="form">
