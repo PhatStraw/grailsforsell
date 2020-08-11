@@ -7,20 +7,11 @@ import ItemPage from './pages/ItemPage.js'
 import Home from './pages/Home.js'
 import SignUp from './pages/signup.js'
 import SignIn from './pages/signin.js'
-import Checkout from './pages/checkout.js'
 import ItemUpload from './pages/itemupload'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
-import { loadStripe } from '@stripe/stripe-js'
 import { transitions, positions, Provider as AlertProvider } from 'react-alert'
 import AlertTemplate from 'react-alert-template-basic'
-import {
-  CardElement,
-  Elements,
-  useStripe,
-  useElements,
-} from '@stripe/react-stripe-js'
 
-const stripePromise = loadStripe(`${process.env.STRIPE_KEY}`)
 
 const options = {
   // you can also just use 'bottom center'
@@ -32,7 +23,6 @@ const options = {
 
 const App = () => {
   return (
-    <Elements stripe={stripePromise}>
       <AlertProvider template={AlertTemplate} {...options}>
         <Router>
           <div className="app">
@@ -44,14 +34,12 @@ const App = () => {
               <Route path="/vintage" component={Vintage} />
               <Route path="/streetwear" component={Streetwear} />
               <Route path="/hype" component={Hype} />
-              <Route path="/checkout" component={Checkout} />
               <Route path="/item/:id" component={ItemPage} />
               <Route path="/create" component={ItemUpload} />
             </Switch>
           </div>
         </Router>
       </AlertProvider>
-    </Elements>
   )
 }
 

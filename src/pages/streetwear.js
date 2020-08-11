@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import '../css/bare.css'
 import Shirt from '../assets/shirt.jpeg'
 import ItemCover from '../components/itemCover'
-import Checkout from './checkout'
 
 const Streetwear = () => {
   const [items, setItems] = useState()
