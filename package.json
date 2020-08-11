@@ -6,8 +6,7 @@
   "scripts": {
     "webpack-dev-server": "webpack-dev-server",
     "dev": "webpack-dev-server --mode=development",
-    "prod": "webpack --mode=production",
-    "build": "webpack"
+    "prod": "webpack --mode=production"
   },
   "author": "kevin sims",
   "license": "ISC",
