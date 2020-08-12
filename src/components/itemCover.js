@@ -1,8 +1,8 @@
-import React, {useState, useEffect} from "react";
-import { Link } from "react-router-dom"
-import "../css/bare.css"
+import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import '../css/bare.css'
 import Shirt from '../assets/shirt.jpeg'
-import {FaShoppingCart} from 'react-icons/fa'
+import { FaShoppingCart } from 'react-icons/fa'
 import { useAlert } from 'react-alert'
 
 const ItemCover = (props) => {
@@ -11,49 +11,53 @@ const ItemCover = (props) => {
   const [id, setId] = useState()
   const alert = useAlert()
 
-  useEffect(()=>{
+  useEffect(() => {
     setId(props.id)
-    if(props.title.length > 18){
-        var newTitle = props.title.slice(0, 15) 
-        setTitle(newTitle.concat('...'))   
-    }else{
+    if (props.title.length > 18) {
+      var newTitle = props.title.slice(0, 15)
+      setTitle(newTitle.concat('...'))
+    } else {
       setTitle(props.title)
     }
 
-    if(props.description.length > 34){
-      var newDescription = props.description.slice(0, 30) 
-      setDescription(newDescription.concat('...'))   
-    }else{
+    if (props.description.length > 34) {
+      var newDescription = props.description.slice(0, 30)
+      setDescription(newDescription.concat('...'))
+    } else {
       setDescription(props.description)
     }
-  },[props])
+  }, [props])
 
   const onClick = async (e) => {
     e.preventDefault()
-    try{
-      var localCart = localStorage.getItem('cart');
-    const cart = await fetch(`http://localhost:8081/user/additem?id=${localCart}`, {
-      method: 'POST',
-      mode: 'cors',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ id })
-    });
-    const newC = await cart.json()
-    if(newC){
-      alert.show('Success!')
-    }
-    }catch(e){
+    try {
+      var localCart = localStorage.getItem('cart')
+      if (localCart) {
+        const data = await fetch(
+          `http://localhost:8081/user/additem?id=${localCart}`,
+          {
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ id }),
+          }
+        )
+        const cart = await data.json()
+        if (cart) {
+          alert.show('Success!')
+        }
+      }
+    } catch (e) {
       console.log(e)
       alert.show('Failed to add item to cart')
     }
-    
   }
 
-  if(props.id){
-      return (
-      <div className="item"> 
+  if (props.id) {
+    return (
+      <div className="item">
         <Link to={`/item/${props.id}`}>
           <img src={Shirt} />
         </Link>
@@ -65,19 +69,22 @@ const ItemCover = (props) => {
           <div className="CoverDescription">{description}</div>
           <div className="priceCart">
             <div className="CoverPrice">${props.price}</div>
-            <button style={{
-              width: '2rem',
-              height: '1.1rem'
+            <button
+              style={{
+                width: '2rem',
+                height: '1.1rem',
               }}
               id={props.id}
               onClick={onClick}
-              ><FaShoppingCart size={12}/></button>
+            >
+              <FaShoppingCart size={12} />
+            </button>
           </div>
         </div>
       </div>
-    );
+    )
   }
-  return <div>Loading</div> 
-};
+  return <div>Loading</div>
+}
 
-export default ItemCover;
+export default ItemCover
