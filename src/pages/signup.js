@@ -18,7 +18,6 @@ const SignUp = () => {
       body: JSON.stringify({email, password})
     });
     const user = await newUser.json()
-    console.log(user.user._id)
     if(user.user._id){
       localStorage.setItem('cart', user.user._id)
       setReady(true)
@@ -31,7 +30,7 @@ const SignUp = () => {
     <div className="wrap">
       <div className="signUp">
         <form className="signUp">
-          <h3>Sign Up</h3>
+          <h3>Register</h3>
           <input placeholder="EMAIL" className="input" onChange={e => setEmail(e.target.value)} value={email}/>
           <input placeholder="PASSWORD" className="input" onChange={e => setPassword(e.target.value)} value={password}/>
           <button onClick={onClick}>SUBMIT</button>
