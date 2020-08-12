@@ -7,7 +7,6 @@ const Nav = () => {
   const [stripe, setStripe] = useState(null)
   const alert = useAlert()
 
-
   useEffect(
     () => setStripe(window.Stripe(process.env.STRIPE_PUBLISHABLE_KEY)),
     []
@@ -37,18 +36,22 @@ const Nav = () => {
 
   return (
     <div className="nav">
-      <h2 className="header">
-        <div style={{ display: 'hidden' }}></div>
+      <div style={{display: 'flex', justifyContent: 'space-around', width: '100%', alignItems: 'baseline', marginBottom: '10px'}}>
         <NavLink to="/" className="navTitle">
           Grails For Sell
         </NavLink>
-        <button
-          onClick={goToCheckout}
-          style={{ border: 'none', padding: '5px' }}
-        >
-          <FaShoppingCart size={20} />
-        </button>
-      </h2>
+        <div>
+          <NavLink to="/signin" className="navLinks">Login</NavLink>
+          <NavLink to="/signup" className="navLinks">Register</NavLink>
+          <button
+            onClick={goToCheckout}
+            style={{ border: 'none', padding: '5px' }}
+          >
+            <FaShoppingCart size={10} />
+          </button>
+        </div>
+      </div>
+
       <div className="options">
         <NavLink to="/vintage" className="navItem">
           Vintage
