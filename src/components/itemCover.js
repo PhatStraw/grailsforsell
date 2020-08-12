@@ -47,8 +47,10 @@ const ItemCover = (props) => {
         const cart = await data.json()
         if (cart) {
           alert.show('Success!')
+          return
         }
       }
+      alert.show('Please sign in')
     } catch (e) {
       console.log(e)
       alert.show('Failed to add item to cart')
