@@ -58,7 +58,7 @@ body {
 .items{
     display: flex;
     flex-wrap: wrap;
-    margin: .5rem;
+    margin: 1rem;
     justify-content: space-between;
 }
 
