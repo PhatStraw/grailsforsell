@@ -34,14 +34,23 @@ const Item = (props) => {
 
   return (
     <div className="itemItem">
-      <img src={Shirt} className="itemShirt" />
+      <img
+        src={Shirt}
+        style={{ margin: '0 auto', height: 'auto', maxHeight: '600px', width: '100%' }}
+      />
       <div className="itemContent">
         <div className="itemBlock">
           <div className="itemTitle">{props.title}</div>
           <div className="itemSize">{props.size.toUpperCase()}</div>
         </div>
         <div className="itemDescription">{props.description}</div>
-        <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+          }}
+        >
           <div className="itemPrice">${props.price}</div>
           <button
             style={{

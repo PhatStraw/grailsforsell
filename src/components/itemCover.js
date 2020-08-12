@@ -61,7 +61,10 @@ const ItemCover = (props) => {
     return (
       <div className="item">
         <Link to={`/item/${props.id}`}>
-          <img src={Shirt} />
+          <img
+            src={Shirt}
+            style={{ margin: '0 auto', height: 'auto', maxHeight: '150px', width: '100%' }}
+          />
         </Link>
         <div className="itemContent">
           <div className="itemBlock">
