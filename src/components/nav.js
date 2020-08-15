@@ -8,7 +8,7 @@ const Nav = () => {
   const alert = useAlert()
 
   useEffect(
-    () => setStripe(window.Stripe(process.env.STRIPE_PUBLISHABLE_KEY)),
+    () => setStripe(window.Stripe(process.env.STRIPE_PUBLISHABLE_KEY || 'pk_live_51GwCfaFyetTzufDNcpEmglcKUNAVrgJIBTA9Itkxkq5qgDl0fRY5YDSfzs1P7CndIDKbJEiqIqC3WqmeUeTYbDRO00FQxgmv4i')),
     []
   )
 
