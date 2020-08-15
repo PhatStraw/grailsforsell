@@ -11,7 +11,7 @@ const Home = () => {
     const fetchItems = async () => {
       try {
         const res = await fetch(
-          'http://localhost:8081/items/all'
+          'https://grailsforsell.herokuapp.com/items/all'
         )
         const final = await res.json()
         setItems(final)

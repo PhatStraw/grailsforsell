@@ -8,7 +8,7 @@ const ItemPage = (props) => {
   const [item, setItem] = useState()
   useEffect(()=>{
     const hit = async() =>{
-        const doc = await fetch(`http://localhost:8081/items/solo?id=${props.match.params.id}`)
+        const doc = await fetch(`https://grailsforsell.herokuapp.com/items/solo?id=${props.match.params.id}`)
         const item = await doc.json()
         console.log(item.item)
         setItem(item)

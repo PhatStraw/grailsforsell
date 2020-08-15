@@ -16,7 +16,7 @@ const Nav = () => {
     const localCart = localStorage.getItem('cart')
     if (localCart) {
       const res = await fetch(
-        `http://localhost:8081/user/checkout?id=${localCart}`
+        `https://grailsforsell.herokuapp.com/user/checkout?id=${localCart}`
       )
       const data = await res.json()
 
