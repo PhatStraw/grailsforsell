@@ -11,8 +11,8 @@ const ItemUpload = () => {
     price: '00.00',
     size: '',
     description: '',
-    category: '',
-    condition: '',
+    category: 'vintage',
+    condition: 'new',
   })
 
   const alert = useAlert()
