@@ -1,179 +1,186 @@
 html,
 body {
-    height: 100vh;
-    width: 100vw;
-    overflow-x: hidden;
-    padding: 0;
-    margin: 0;
-    font-family: 'Roboto', sans-serif;
-    color: #1a1a1e;
+  height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+  padding: 0;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  color: #1a1a1e;
 }
 
-
-#root{
-    margin: 0;
-    padding: 0
+#root {
+  margin: 0;
+  padding: 0;
 }
 
-.app{
-    width: 100%; 
-    height: 100vh; 
-    overflow-x: hidden;
-    margin-right: auto;
-    margin-left: auto;
-    display: flex;
-    flex-direction: column;
-    justify-items: center;
-    line-height: 1rem;
+.app {
+  width: 100%;
+  height: 100vh;
+  overflow-x: hidden;
+  margin-right: auto;
+  margin-left: auto;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  line-height: 1rem;
+  max-width: 900px;
+
 }
 
-.priceCart{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+.priceCart {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-.wrap{
-    height: 100vh; 
-    width: 100%;
-    overflow-x: hidden;
+.wrap {
+  height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
 }
 
-.form{
-    display: flex;
-    flex-direction: column;
-    margin: .5rem;
+.form {
+  display: flex;
+  flex-direction: column;
+  margin: 0.5rem;
 }
 
-.signUp{
-    display: flex;
-    flex-direction: column;
-    margin: 0 2rem;
+.signUp {
+  display: flex;
+  flex-direction: column;
+  margin: 0 2rem;
 }
 
-.input{
-    margin: .5rem 0
+.input {
+  margin: 0.5rem 0;
 }
 
-.items{
-    display: flex;
-    flex-wrap: wrap;
-    margin: 1rem;
-    justify-content: space-between;
+.items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.item{
-    width: 49%;
+.item {
+  width: 165px;
+  margin: 5px;
 }
 
-.itemItem{
-    padding: 1rem;
-    margin-right: auto;
-    margin-left: auto;
-    max-width: 800px;
+.itemItem {
+  padding: 1rem;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 800px;
 }
 
-.itemContent{
-    margin: .4rem .3rem;
+.itemContent {
+  margin: 0.4rem 0.3rem;
 }
 
-.itemTitle{
-    font-size: 1rem;
-    font-weight: bold;
+.itemTitle {
+  font-size: 1rem;
+  font-weight: bold;
 }
 
-.itemSize{
-    font-size: .9rem;
+.itemSize {
+  font-size: 0.9rem;
 }
 
-.itemDescription{
-    font-size: .7rem;
-    margin: .2rem 0;
-    line-height: 1rem;
+.itemDescription {
+  font-size: 0.7rem;
+  margin: 0.2rem 0;
+  line-height: 1rem;
 }
 
-.itemShirt{
-    height:95%
+.itemShirt {
+  height: 95%;
 }
 
-.CoverContent{
-    margin: .2rem .3rem;
+.CoverContent {
+  margin: 0.2rem 0.3rem;
 }
 
-.CoverTitle{
-    font-size: .8rem;
-    font-weight: bold;
+.CoverTitle {
+  font-size: 0.8rem;
+  font-weight: bold;
 }
 
-.CoverSize{
-    font-size: .8rem;
+.CoverSize {
+  font-size: 0.8rem;
 }
 
-.CoverDescription{
-    font-size: .5rem;
-    margin-bottom: .1rem;
+.CoverDescription {
+  font-size: 0.5rem;
+  margin-bottom: 0.1rem;
 }
 
-.CoverShirt{
-    height:100%
+.CoverShirt {
+  height: 100%;
 }
 
-.CoverPrice{
-    font-size: .8em;
+.CoverPrice {
+  font-size: 0.8em;
 }
 
-.itemBlock{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+.itemBlock {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-
-.navItem{
-    text-decoration: none;
-    color: black;
-    padding: .1rem;
-    font-size: 15px;
+.navItem {
+  text-decoration: none;
+  color: black;
+  padding: 0.1rem;
+  font-size: 15px;
 }
 
-.navItem:hover{
+.navItem:hover {
+  border-bottom: 1px solid black;
+}
+
+.navItem.active {
+  border-bottom: 1px solid black;
+}
+
+.navTitle {
+  text-decoration: none;
+  color: black;
+  font-size: 18px;
+  padding: 0;
+  margin: 0;
+}
+
+.navLinks {
+  text-decoration: none;
+  color: black;
+  padding-right: 0.5rem;
+  font-size: 14px;
+}
+
+.navLinks.active {
     border-bottom: 1px solid black;
+  }
+
+img {
+  height: 60%;
+  width: 100%;
 }
 
-.navItem.active{
-    border-bottom: 1px solid black;
+.nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0.5rem;
 }
 
-.navTitle{
-    text-decoration: none;
-    color: black;
-    font-size: 18px;
-    padding: 0;
-    margin: 0
-}
-
-.navLinks{
-    text-decoration: none;
-    color: black;
-    padding-right: .5rem;
-    font-size: 14px;
-}
-
-img{
-    height: 60%;
-    width: 100%
-}
-
-.nav{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: .5rem;
-}
-
-.options{
-    display: flex;
-    width: 100%;
-    flex-direction: row;
-    justify-content: space-evenly;
+.options {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
