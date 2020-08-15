@@ -39,6 +39,10 @@ const ItemUpload = () => {
       },
       body: JSON.stringify( { ...state } )
     });
+    if(newItem){
+      alert.show('Item added!')
+      setState({})
+    }
   }
   return (
     <div className="Wrap">
