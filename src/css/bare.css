@@ -49,7 +49,9 @@ body {
 .signUp {
   display: flex;
   flex-direction: column;
-  margin: 0 2rem;
+  margin: auto;
+  width: 250px;
+  max-width: 600px;
 }
 
 .input {
