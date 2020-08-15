@@ -30,7 +30,8 @@ const ItemUpload = () => {
   const onSubmit = async (e) =>{
     e.preventDefault()
     console.log(state)
-    const newItem = await fetch('https://grailsforsell.herokuapp.com/items/create?id=5f10b40a1f073a44186567a8',{
+    const localCart = localStorage.getItem('cart')
+    const newItem = await fetch(`https://grailsforsell.herokuapp.com/items/create?id=${localCart}`,{
       method: 'POST',
       mode: 'cors',
       headers: {
