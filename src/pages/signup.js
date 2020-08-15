@@ -9,7 +9,7 @@ const SignUp = () => {
 
   const onClick = async (e) => {
     e.preventDefault()
-    const newUser = await fetch('http://localhost:8081/user/signup', {
+    const newUser = await fetch('https://grailsforsell.herokuapp.com/user/signup', {
       method: 'POST',
       mode: 'cors',
       headers: {

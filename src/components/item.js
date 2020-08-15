@@ -12,7 +12,7 @@ const Item = (props) => {
     try {
       var localCart = localStorage.getItem('cart')
       const cart = await fetch(
-        `http://localhost:8081/user/additem?id=${localCart}`,
+        `https://grailsforsell.herokuapp.com/user/additem?id=${localCart}`,
         {
           method: 'POST',
           mode: 'cors',
