@@ -7,7 +7,6 @@ import '../css/bare.css'
 
 const ItemUpload = () => {
   const [state, setState] = useState({
-    pic: {},
     name: '',
     price: '00.00',
     size: '',
@@ -21,6 +20,7 @@ const ItemUpload = () => {
 
   const onChange = (evt) => {
     const value = evt.target.value;
+    console.log(value)
     setState({
       ...state,
       [evt.target.name]: value
@@ -31,7 +31,7 @@ const ItemUpload = () => {
     e.preventDefault()
     console.log(state)
     const localCart = localStorage.getItem('cart')
-    const newItem = await fetch(`https://grailsforsell.herokuapp.com/items/create?id=${localCart}`,{
+    const newItem = await fetch(`http://localhost:8081/items/create?id=${localCart}`,{
       method: 'POST',
       mode: 'cors',
       headers: {
@@ -72,7 +72,7 @@ const ItemUpload = () => {
 
         <div className="form">
           <label>Category</label>
-          <select placeholder="Category" name='category' value={state.category} onChange={onChange}>
+          <select placeholder="Category" id="cat" name='category' value={state.category} onChange={onChange}>
             <option value="vintage">Vintage</option>
             <option value="streetwear">Streetwear</option>
             <option value="hype">Hype</option>
@@ -81,8 +81,8 @@ const ItemUpload = () => {
         <div className="form">
           <label>Condition</label>
           <select placeholder="Condition" name='condition' value={state.condition} onChange={onChange}>
-            <option>Used</option>
-            <option>New</option>
+            <option value="used">Used</option>
+            <option value="new">New</option>
           </select>
         </div>
 

@@ -11,7 +11,7 @@ const Hype = () => {
     const fetchItems = async () => {
       try {
         const res = await fetch(
-          'https://grailsforsell.herokuapp.com/items/category?category=hype'
+          'http://localhost:8081/items/category?category=hype'
         )
         const final = await res.json()
         setItems(final)

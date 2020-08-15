@@ -11,7 +11,7 @@ const Vintage = () => {
     const fetchItems = async () => {
       try {
         const res = await fetch(
-          'https://grailsforsell.herokuapp.com/items/category?category=vintage'
+          'http://localhost:8081/items/category?category=vintage'
         )
         const final = await res.json()
         setItems(final)

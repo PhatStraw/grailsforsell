@@ -16,7 +16,7 @@ const Nav = () => {
     const localCart = localStorage.getItem('cart')
     if (localCart) {
       const res = await fetch(
-        `https://grailsforsell.herokuapp.com/user/checkout?id=${localCart}`
+        `http://localhost:8081/user/checkout?id=${localCart}`
       )
       const data = await res.json()
 
@@ -43,6 +43,7 @@ const Nav = () => {
         <div>
           <NavLink to="/signin" className="navLinks">Login</NavLink>
           <NavLink to="/signup" className="navLinks">Register</NavLink>
+          <NavLink to="/create" className="navLinks">Create</NavLink>
           <button
             onClick={goToCheckout}
             style={{ border: 'none', padding: '5px' }}
