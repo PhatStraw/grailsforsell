@@ -63,14 +63,14 @@ body {
 .items {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: space-evenly;
   margin: auto;
   max-width: 800px;
 }
 
 .item {
   width: 165px;
-  margin: 0 auto;
+  margin: 0;
 }
 
 .itemItem {
