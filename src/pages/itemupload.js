@@ -46,7 +46,7 @@ const ItemUpload = () => {
         pic: {},
         name: '',
         price: '00.00',
-        size: '',
+        size: 's',
         description: '',
         category: '',
         condition: '',
