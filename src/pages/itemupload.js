@@ -76,12 +76,19 @@ const ItemUpload = () => {
 
         <div className="form">
           <label>Size</label>
-          <input
+          <select
             placeholder="Size"
             name="size"
             value={state.size}
             onChange={onChange}
-          />
+          >
+            <option value="s">S</option>
+            <option value="m">M</option>
+            <option value="l">L</option>
+            <option value="xl">XL</option>
+            <option value="xxl">XXL</option>
+            <option value="xxxl">XXXL</option>
+          </select>
         </div>
         <div className="form">
           <label>Price</label>
