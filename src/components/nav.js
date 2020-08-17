@@ -34,7 +34,7 @@ const Nav = () => {
     alert.show('Please sign in')
   }
 
-  if(localCart === process.env.ADMIN_CART){
+  if(localCart){
     return (
       <div className="nav">
         <div style={{display: 'flex', justifyContent: 'space-around', width: '100%', alignItems: 'baseline', marginBottom: '10px'}}>
