@@ -17,6 +17,7 @@
     "@babel/preset-react": "^7.8.3",
     "babel-loader": "^8.0.6",
     "css-loader": "^3.4.2",
+    "dotenv": "^8.2.0",
     "dotenv-webpack": "^2.0.0",
     "file-loader": "^6.0.0",
     "html-loader": "^0.5.5",
@@ -32,7 +33,6 @@
   "dependencies": {
     "@stripe/react-stripe-js": "^1.1.2",
     "@stripe/stripe-js": "^1.8.0",
-    "dotenv": "^8.2.0",
     "react-alert": "^7.0.2",
     "react-alert-template-basic": "^1.0.0",
     "react-dropzone": "^11.0.2",
