@@ -20,7 +20,7 @@ const DropZone = ({ state, setState, alert }) => {
             )
 
             const file = await res.json()
-            setState({ ...state, pic: file.secure_url })
+            setState({ ...state, image: file.secure_url })
             alert.show('Picture Added!')
             return
           } catch (err) {

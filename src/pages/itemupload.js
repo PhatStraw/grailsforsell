@@ -13,6 +13,7 @@ const ItemUpload = () => {
     description: '',
     category: 'vintage',
     condition: 'new',
+    image: ''
   })
 
   const alert = useAlert()
