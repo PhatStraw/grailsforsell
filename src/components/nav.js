@@ -14,7 +14,7 @@ const Nav = () => {
 
   const goToCheckout = async () => {
     const localCart = localStorage.getItem('cart')
-    if (localCart === process.env.ADMIN_CART) {
+    if (localCart) {
       const res = await fetch(
         `https://grailsforsell.herokuapp.com/user/checkout?id=${localCart}`
       )
@@ -34,7 +34,7 @@ const Nav = () => {
     alert.show('Please sign in')
   }
 
-  if(localCart){
+  if(localCart === process.env.ADMIN_CART){
     return (
       <div className="nav">
         <div style={{display: 'flex', justifyContent: 'space-around', width: '100%', alignItems: 'baseline', marginBottom: '10px'}}>
