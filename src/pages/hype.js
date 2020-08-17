@@ -29,7 +29,7 @@ const Hype = () => {
             return( 
               <ItemCover
                 id={i._id}
-                photo={i.img}
+                photo={i.image}
                 title={i.name}
                 size={i.size}
                 description={i.description}
