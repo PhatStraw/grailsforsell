@@ -14,7 +14,7 @@ const Nav = () => {
 
   const goToCheckout = async () => {
     const localCart = localStorage.getItem('cart')
-    if (localCart) {
+    if (localCart === process.env.ADMIN_CART) {
       const res = await fetch(
         `https://grailsforsell.herokuapp.com/user/checkout?id=${localCart}`
       )
