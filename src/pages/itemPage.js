@@ -20,7 +20,7 @@ const ItemPage = (props) => {
     return (
       <div className="itemPage">
         <Item
-          // photo={item.item.img}
+          photo={item.item.image}
           id={item.item._id}
           title={item.item.name}
           size={item.item.size}

@@ -6,7 +6,7 @@ import '../css/bare.css'
 
 const ItemUpload = () => {
   const [state, setState] = useState({
-    pic: {},
+    pic: '',
     name: '',
     price: '00.00',
     size: 's',
