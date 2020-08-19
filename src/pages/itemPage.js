@@ -10,7 +10,6 @@ const ItemPage = (props) => {
     const hit = async() =>{
         const doc = await fetch(`https://grailsforsell.herokuapp.com/items/solo?id=${props.match.params.id}`)
         const item = await doc.json()
-        console.log(item.item)
         setItem(item)
       }
      hit()
